@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class Distance {
+public:
+    int kilometers;
+    int meters;
+
+    // Constructor to initialize distance
+    Distance(int km = 0, int m = 0) : kilometers(km), meters(m) {}
+
+    // Function to display distance
+    void display() {
+        cout << kilometers << " kilometers and " << meters << " meters" << endl;
+    }
+};
+
+// Function to compare two distances (call by address)
+void compareDistances(Distance* d1, Distance* d2) {
+    int totalMeters1 = d1->kilometers * 1000 + d1->meters;
+    int totalMeters2 = d2->kilometers * 1000 + d2->meters;
+
+    if (totalMeters1 > totalMeters2) {
+        cout << "Distance 1 is greater than Distance 2." << endl;
+    } else if (totalMeters1 < totalMeters2) {
+        cout << "Distance 2 is greater than Distance 1." << endl;
+    } else {
+        cout << "Both distances are equal." << endl;
+    }
+}
+
+int main() {
+    Distance d1(5, 300); // 5 km 300 m
+    Distance d2(4, 800); // 4 km 800 m
+
+    cout << "Distance 1: ";
+    d1.display();
+
+    cout << "Distance 2: ";
+    d2.display();
+
+    compareDistances(&d1, &d2);
+
+    return 0;
+}
