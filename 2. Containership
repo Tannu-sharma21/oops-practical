@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Class Engine
+class Engine {
+public:
+    string type;
+    
+    Engine(string engineType) : type(engineType) {}
+
+    void displayEngineType() const {
+        cout << "Engine Type: " << type << endl;
+    }
+};
+
+// Class Car contains Engine
+class Car {
+private:
+    string brand;
+    Engine engine;  // Containership - Car "contains" an Engine object
+
+public:
+    Car(string carBrand, string engineType) : brand(carBrand), engine(engineType) {}
+
+    void displayDetails() const {
+        cout << "Car Brand: " << brand << endl;
+        engine.displayEngineType();  // Accessing Engine's functionality
+    }
+};
+
+// Main function
+int main() {
+    Car myCar("Toyota", "V8");
+    myCar.displayDetails();
+
+    return 0;
+}
