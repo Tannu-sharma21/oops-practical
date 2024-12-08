@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Base {
+public:
+    void display() {
+        cout << "Display function in Base class." << endl;
+    }
+};
+
+// Derived class
+class Derived : public Base {
+public:
+    // Hiding the display function from the base class
+    void display() {
+        cout << "Display function in Derived class." << endl;
+    }
+};
+
+int main() {
+    Base b;
+    Derived d;
+    
+    // Calling display() using base class object
+    b.display();
+    
+    // Calling display() using derived class object
+    d.display();
+    
+    // Calling base class function using base class pointer to derived class object
+    Base* basePtr = &d;
+    basePtr->display();  // This will call the Base class function due to function hiding
+    
+    return 0;
+}
