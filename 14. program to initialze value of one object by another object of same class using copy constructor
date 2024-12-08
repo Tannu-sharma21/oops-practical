@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class MyClass {
+private:
+    int value;
+
+public:
+    // Constructor to initialize the value
+    MyClass(int val) {
+        value = val;
+    }
+
+    // Copy constructor to initialize one object using another
+    MyClass(const MyClass &obj) {
+        value = obj.value;
+    }
+
+    // Function to display the value
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    // Creating an object of MyClass
+    MyClass obj1(10);
+
+    // Using the copy constructor to create a new object obj2
+    MyClass obj2 = obj1;
+
+    // Displaying values of both objects
+    cout << "obj1: ";
+    obj1.display();
+
+    cout << "obj2: ";
+    obj2.display();
+
+    return 0;
+}
