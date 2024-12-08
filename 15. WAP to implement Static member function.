@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+class MyClass {
+private:
+    static int count;  // Static member variable
+
+public:
+    MyClass() {
+        count++;  // Increment count when an object is created
+    }
+
+    static void displayCount() {  // Static member function
+        cout << "Number of objects created: " << count << endl;
+    }
+};
+
+// Define the static member variable outside the class
+int MyClass::count = 0;
+
+int main() {
+    MyClass obj1;
+    MyClass obj2;
+    MyClass obj3;
+
+    // Call the static function without creating an object
+    MyClass::displayCount();
+
+    return 0;
+}
