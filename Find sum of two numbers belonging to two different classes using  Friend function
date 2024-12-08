@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+// Forward declaration of class B
+class B;
+
+class A {
+    private:
+        int numA;
+
+    public:
+        // Constructor to initialize numA
+        A(int a) : numA(a) {}
+
+        // Declare friend function
+        friend int addNumbers(A, B);
+};
+
+class B {
+    private:
+        int numB;
+
+    public:
+        // Constructor to initialize numB
+        B(int b) : numB(b) {}
+
+        // Declare friend function
+        friend int addNumbers(A, B);
+};
+
+// Friend function definition
+int addNumbers(A objA, B objB) {
+    return objA.numA + objB.numB;
+}
+
+int main() {
+    A objA(10); // Create object of class A with value 10
+    B objB(20); // Create object of class B with value 20
+
+    // Calculate sum using friend function
+    cout << "Sum of two numbers: " << addNumbers(objA, objB) << endl;
+
+    return 0;
+}
