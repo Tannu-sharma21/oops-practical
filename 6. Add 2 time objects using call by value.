@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+// Time class definition
+class Time {
+public:
+    int hours;
+    int minutes;
+
+    // Constructor to initialize time
+    Time(int h = 0, int m = 0) : hours(h), minutes(m) {}
+
+    // Function to display time
+    void display() {
+        cout << hours << " hrs " << minutes << " mins" << endl;
+    }
+
+    // Function to add two Time objects
+    Time add(Time t) {
+        Time result;
+        result.minutes = minutes + t.minutes;
+        result.hours = hours + t.hours + (result.minutes / 60);
+        result.minutes %= 60; // Normalize minutes to 0-59
+        return result;
+    }
+};
+
+int main() {
+    // Create two time objects
+    Time t1(2, 50); // 2 hrs 50 mins
+    Time t2(1, 30); // 1 hr 30 mins
+
+    // Add the time objects
+    Time t3 = t1.add(t2);
+
+    // Display the result
+    cout << "Time 1: ";
+    t1.display();
+    cout << "Time 2: ";
+    t2.display();
+    cout << "Sum of Times: ";
+    t3.display();
+
+    return 0;
+}
