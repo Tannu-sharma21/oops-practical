@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Animal {
+public:
+    // Virtual function
+    virtual void sound() {
+        cout << "Animal makes a sound." << endl;
+    }
+};
+
+// Derived class
+class Dog : public Animal {
+public:
+    // Overriding the base class function
+    void sound() override {
+        cout << "Dog barks." << endl;
+    }
+};
+
+int main() {
+    // Creating an object of derived class
+    Dog dog;
+    dog.sound(); // Calls the overridden function
+
+    // Creating a pointer of base class type
+    Animal* animal = new Dog();
+    animal->sound(); // Calls the overridden function through base class pointer
+
+    return 0;
+}
