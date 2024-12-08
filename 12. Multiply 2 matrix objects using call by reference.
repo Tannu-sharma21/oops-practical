@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+// Function to multiply matrices
+void multiplyMatrices(int (&A)[2][2], int (&B)[2][2], int (&result)[2][2]) {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < 2; k++) {
+                result[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+// Function to display a matrix
+void displayMatrix(int mat[2][2]) {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int A[2][2] = {{1, 2}, {3, 4}};  // First matrix
+    int B[2][2] = {{5, 6}, {7, 8}};  // Second matrix
+    int result[2][2];  // To store the result of multiplication
+
+    // Multiply the matrices
+    multiplyMatrices(A, B, result);
+
+    // Display the result
+    cout << "Result of matrix multiplication:" << endl;
+    displayMatrix(result);
+
+    return 0;
+}
