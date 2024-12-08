@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+// Class to represent a complex number
+class Complex {
+private:
+    float real;
+    float imag;
+
+public:
+    // Constructor to initialize a complex number
+    Complex(float r = 0, float i = 0) {
+        real = r;
+        imag = i;
+    }
+
+    // Destructor
+    ~Complex() {
+        cout << "Complex number object destroyed." << endl;
+    }
+
+    // Function to display the complex number
+    void display() {
+        cout << real << " + " << imag << "i" << endl;
+    }
+
+    // Function to add two complex numbers
+    Complex add(Complex c) {
+        Complex result;
+        result.real = real + c.real;
+        result.imag = imag + c.imag;
+        return result;
+    }
+};
+
+int main() {
+    // Creating two complex numbers
+    Complex num1(3.4, 5.6), num2(1.2, 2.3);
+
+    // Displaying the complex numbers
+    cout << "First complex number: ";
+    num1.display();
+    cout << "Second complex number: ";
+    num2.display();
+
+    // Adding the complex numbers
+    Complex result = num1.add(num2);
+
+    // Displaying the result of addition
+    cout << "Sum of the complex numbers: ";
+    result.display();
+
+    return 0;
+}
