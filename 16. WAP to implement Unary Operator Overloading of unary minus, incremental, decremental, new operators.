@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class MyClass {
+private:
+    int x;
+
+public:
+    // Constructor
+    MyClass(int val) : x(val) {}
+
+    // Unary minus operator overloading
+    MyClass operator-() {
+        return MyClass(-x);  // Negates the value of x
+    }
+
+    // Increment operator overloading (prefix)
+    MyClass& operator++() {
+        x++;
+        return *this;
+    }
+
+    // Decrement operator overloading (prefix)
+    MyClass& operator--() {
+        x--;
+        return *this;
+    }
+
+    // New operator overloading
+    void* operator new(size_t size) {
+        cout << "Custom new operator called!" << endl;
+        return ::operator new(size);  // Calls global new
+    }
+
+    // Display the value of x
+    void display() {
+        cout << "x = " << x << endl;
+    }
+};
+
+int main() {
+    // Creating an object using the constructor
+    MyClass obj(10);
+    obj.display();
+
+    // Unary minus operator
+    MyClass objNeg = -obj;
+    objNeg.display();
+
+    // Increment operator
+    ++obj;
+    obj.display();
+
+    // Decrement operator
+    --obj;
+    obj.display();
+    
+    // Using custom new operator
+    MyClass* objNew = new MyClass(50);
+    objNew->display();
+
+    delete objNew;  // Don't forget to free memory
+    return 0;
+}
