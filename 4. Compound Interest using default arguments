@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath> // For the pow() function
+using namespace std;
+
+// Function to calculate compound interest with default arguments
+double calculateCompoundInterest(double principal, double rate = 5.0, int time = 2) {
+    return principal * pow((1 + rate / 100), time) - principal;
+}
+
+int main() {
+    double principal, rate;
+    int time;
+
+    cout << "Enter the principal amount: ";
+    cin >> principal;
+
+    cout << "Enter the rate of interest (default is 5%): ";
+    cin >> rate;
+
+    cout << "Enter the time period in years (default is 2 years): ";
+    cin >> time;
+
+    // Calculate and display Compound Interest with user-provided inputs
+    double compoundInterest = calculateCompoundInterest(principal, rate, time);
+    cout << "Compound Interest (custom inputs): " << compoundInterest << endl;
+
+    // Calculate and display Compound Interest with default rate and time
+    double defaultCompoundInterest = calculateCompoundInterest(principal);
+    cout << "Compound Interest (default rate and time): " << defaultCompoundInterest << endl;
+
+    return 0;
+}
