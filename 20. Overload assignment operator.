@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+class Complex {
+public:
+    int real, imag;
+
+    // Constructor
+    Complex(int r = 0, int i = 0) {
+        real = r;
+        imag = i;
+    }
+
+    // Overloading assignment operator
+    Complex& operator=(const Complex& obj) {
+        if (this == &obj) {
+            return *this; // Self-assignment check
+        }
+
+        real = obj.real;
+        imag = obj.imag;
+
+        return *this;
+    }
+
+    void print() {
+        cout << real << " + i" << imag << endl;
+    }
+};
+
+int main() {
+    Complex c1(10, 5), c2(2, 4);
+
+    cout << "Before assignment: " << endl;
+    c1.print();
+    c2.print();
+
+    // Assign c2 to c1
+    c1 = c2;
+
+    cout << "\nAfter assignment: " << endl;
+    c1.print();
+    c2.print();
+
+    return 0;
+}
