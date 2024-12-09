@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Area {
+public:
+    // Function to calculate area of a circle
+    double calculateArea(double radius) {
+        return M_PI * radius * radius;  // Area of a circle = π * r^2
+    }
+
+    // Function to calculate area of a rectangle
+    double calculateArea(double length, double width) {
+        return length * width;  // Area of a rectangle = length * width
+    }
+
+    // Function to calculate area of a triangle
+    double calculateArea(double base, double height, int) {
+        return 0.5 * base * height;  // Area of a triangle = 0.5 * base * height
+    }
+};
+
+int main() {
+    Area area;
+
+    double radius, length, width, base, height;
+
+    // Input and calculate area of a circle
+    cout << "Enter the radius of the circle: ";
+    cin >> radius;
+    cout << "Area of Circle: " << area.calculateArea(radius) << endl;
+
+    // Input and calculate area of a rectangle
+    cout << "\nEnter the length and width of the rectangle: ";
+    cin >> length >> width;
+    cout << "Area of Rectangle: " << area.calculateArea(length, width) << endl;
+
+    // Input and calculate area of a triangle
+    cout << "\nEnter the base and height of the triangle: ";
+    cin >> base >> height;
+    cout << "Area of Triangle: " << area.calculateArea(base, height, 0) << endl;
+
+    return 0;
+}
