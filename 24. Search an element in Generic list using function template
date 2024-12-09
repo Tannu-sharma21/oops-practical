@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function template to search for an element in a list
+template <typename T>
+bool searchElement(const vector<T>& list, const T& key) {
+    for (const T& element : list) {
+        if (element == key) {
+            return true; // Key found
+        }
+    }
+    return false; // Key not found
+}
+
+int main() {
+    // Integer list
+    vector<int> intList = {10, 20, 30, 40, 50};
+    int intKey = 30;
+    cout << "Searching for " << intKey << " in integer list: "
+         << (searchElement(intList, intKey) ? "Found" : "Not Found") << endl;
+
+    // String list
+    vector<string> strList = {"apple", "banana", "cherry", "date"};
+    string strKey = "banana";
+    cout << "Searching for \"" << strKey << "\" in string list: "
+         << (searchElement(strList, strKey) ? "Found" : "Not Found") << endl;
+
+    // Float list
+    vector<float> floatList = {1.1f, 2.2f, 3.3f, 4.4f};
+    float floatKey = 2.2f;
+    cout << "Searching for " << floatKey << " in float list: "
+         << (searchElement(floatList, floatKey) ? "Found" : "Not Found") << endl;
+
+    // Element not in list
+    int missingKey = 100;
+    cout << "Searching for " << missingKey << " in integer list: "
+         << (searchElement(intList, missingKey) ? "Found" : "Not Found") << endl;
+
+    return 0;
+}
