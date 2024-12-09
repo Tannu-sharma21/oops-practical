@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>  // For string manipulation
+using namespace std;
+
+// Define a structure for Student
+struct Student {
+    char* name;    // Dynamically allocated memory for name
+    int rollNo;    // Roll number of the student
+};
+
+int main() {
+    int n;
+    
+    // Ask for the number of students
+    cout << "Enter the number of students: ";
+    cin >> n;
+
+    // Dynamically allocate memory for 'n' students
+    Student* students = new Student[n];
+
+    // Input details for each student
+    for (int i = 0; i < n; ++i) {
+        cin.ignore();  // To clear the input buffer before taking string input
+        
+        // Dynamically allocate memory for the name
+        students[i].name = new char[100];  // Allocating memory for name with a max of 100 characters
+
+        cout << "Enter name of student " << i + 1 << ": ";
+        cin.getline(students[i].name, 100);  // Take name input
+        
+        cout << "Enter roll number of student " << i + 1 << ": ";
+        cin >> students[i].rollNo;
+    }
+
+    // Display the details of each student
+    cout << "\nStudent Details:\n";
+    for (int i = 0; i < n; ++i) {
+        cout << "Student " << i + 1 << " Name: " << students[i].name << ", Roll Number: " << students[i].rollNo << endl;
+    }
+
+    // Deallocate memory
+    for (int i = 0; i < n; ++i) {
+        delete[] students[i].name;  // Free memory allocated for name
+    }
+    delete[] students;  // Free memory allocated for the array of students
+
+    return 0;
+}
