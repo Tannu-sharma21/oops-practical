@@ -1,0 +1,115 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Class template for Stack
+template <typename T>
+class Stack {
+private:
+    vector<T> elements; // Internal container for stack elements
+
+public:
+    // Push element onto the stack
+    void push(const T& item) {
+        elements.push_back(item);
+    }
+
+    // Pop element from the stack
+    void pop() {
+        if (!elements.empty()) {
+            elements.pop_back();
+        } else {
+            cout << "Stack is empty. Cannot pop.\n";
+        }
+    }
+
+    // Peek the top element of the stack
+    T top() const {
+        if (!elements.empty()) {
+            return elements.back();
+        }
+        throw runtime_error("Stack is empty. No top element.");
+    }
+
+    // Check if the stack is empty
+    bool isEmpty() const {
+        return elements.empty();
+    }
+
+    // Display stack elements
+    void display() const {
+        cout << "Stack: ";
+        for (auto it = elements.rbegin(); it != elements.rend(); ++it) {
+            cout << *it << " ";
+        }
+        cout << endl;
+    }
+};
+
+// Class template for Queue
+template <typename T>
+class Queue {
+private:
+    vector<T> elements; // Internal container for queue elements
+
+public:
+    // Enqueue element into the queue
+    void enqueue(const T& item) {
+        elements.push_back(item);
+    }
+
+    // Dequeue element from the queue
+    void dequeue() {
+        if (!elements.empty()) {
+            elements.erase(elements.begin());
+        } else {
+            cout << "Queue is empty. Cannot dequeue.\n";
+        }
+    }
+
+    // Peek the front element of the queue
+    T front() const {
+        if (!elements.empty()) {
+            return elements.front();
+        }
+        throw runtime_error("Queue is empty. No front element.");
+    }
+
+    // Check if the queue is empty
+    bool isEmpty() const {
+        return elements.empty();
+    }
+
+    // Display queue elements
+    void display() const {
+        cout << "Queue: ";
+        for (const T& item : elements) {
+            cout << item << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    // Stack demo
+    Stack<int> intStack;
+    intStack.push(10);
+    intStack.push(20);
+    intStack.push(30);
+    intStack.display();
+    intStack.pop();
+    intStack.display();
+    cout << "Top element: " << intStack.top() << endl;
+
+    // Queue demo
+    Queue<string> stringQueue;
+    stringQueue.enqueue("apple");
+    stringQueue.enqueue("banana");
+    stringQueue.enqueue("cherry");
+    stringQueue.display();
+    stringQueue.dequeue();
+    stringQueue.display();
+    cout << "Front element: " << stringQueue.front() << endl;
+
+    return 0;
+}
