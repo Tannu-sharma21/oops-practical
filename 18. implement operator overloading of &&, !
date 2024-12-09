@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+class Logical {
+private:
+    bool value;
+
+public:
+    // Constructor
+    Logical(bool v) : value(v) {}
+
+    // Overloading &&
+    Logical operator&&(const Logical& other) const {
+        return Logical(this->value && other.value);
+    }
+
+    // Overloading ||
+    Logical operator||(const Logical& other) const {
+        return Logical(this->value || other.value);
+    }
+
+    // Overloading !
+    Logical operator!() const {
+        return Logical(!this->value);
+    }
+
+    // Display the value
+    void display() const {
+        cout << (value ? "true" : "false") << endl;
+    }
+};
+
+int main() {
+    Logical a(true);
+    Logical b(false);
+
+    cout << "Logical operations: " << endl;
+
+    Logical result = a && b;
+    cout << "a && b: ";
+    result.display();
+
+    result = a || b;
+    cout << "a || b: ";
+    result.display();
+
+    result = !a;
+    cout << "!a: ";
+    result.display();
+
+    result = !b;
+    cout << "!b: ";
+    result.display();
+
+    return 0;
+}
+
