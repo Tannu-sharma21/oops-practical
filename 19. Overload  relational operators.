@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+class Complex {
+public:
+    int real, imag;
+
+    // Constructor
+    Complex(int r = 0, int i = 0) {
+        real = r;
+        imag = i;
+    }
+
+    // Overloading relational operators
+    bool operator==(const Complex& obj) {
+        return (real == obj.real && imag == obj.imag);
+    }
+
+    bool operator!=(const Complex& obj) {
+        return !(*this == obj);
+    }
+
+    bool operator<(const Complex& obj) {
+        return (real < obj.real || (real == obj.real && imag < obj.imag));
+    }
+
+    bool operator>(const Complex& obj) {
+        return (real > obj.real || (real == obj.real && imag > obj.imag));
+    }
+
+    bool operator<=(const Complex& obj) {
+        return (*this < obj || *this == obj);
+    }
+
+    bool operator>=(const Complex& obj) {
+        return (*this > obj || *this == obj);
+    }
+};
+
+int main() {
+    Complex c1(10, 5), c2(10, 5), c3(5, 10);
+
+    cout << boolalpha; // Print boolean values as true/false
+
+    cout << "c1 == c2: " << (c1 == c2) << endl;
+    cout << "c1 != c3: " << (c1 != c3) << endl;
+    cout << "c1 < c3: " << (c1 < c3) << endl;
+    cout << "c1 > c2: " << (c1 > c2) << endl;
+    cout << "c1 <= c2: " << (c1 <= c2) << endl;
+    cout << "c1 >= c3: " << (c1 >= c3) << endl;
+
+    return 0;
+}
