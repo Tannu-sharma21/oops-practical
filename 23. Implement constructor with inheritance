@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+// Base class
+class Base {
+public:
+    // Constructor of base class
+    Base() {
+        cout << "Base class constructor called" << endl;
+    }
+};
+
+// Derived class
+class Derived : public Base {
+public:
+    // Constructor of derived class
+    Derived() {
+        cout << "Derived class constructor called" << endl;
+    }
+};
+
+int main() {
+    // Creating an object of derived class
+    Derived obj;
+    return 0;
+}
