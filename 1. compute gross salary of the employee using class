@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+private:
+    float basicSalary, hra, da, grossSalary;
+
+public:
+    // Constructor to initialize the basic salary
+    Employee(float basic) {
+        basicSalary = basic;
+        hra = 0.2 * basicSalary;  // HRA is 20% of basic salary
+        da = 0.5 * basicSalary;   // DA is 50% of basic salary
+    }
+
+    // Function to calculate gross salary
+    void calculateGrossSalary() {
+        grossSalary = basicSalary + hra + da;
+    }
+
+    // Function to display the gross salary
+    void displayGrossSalary() {
+        cout << "Basic Salary: " << basicSalary << endl;
+        cout << "HRA (20%): " << hra << endl;
+        cout << "DA (50%): " << da << endl;
+        cout << "Gross Salary: " << grossSalary << endl;
+    }
+};
+
+int main() {
+    float basic;
+    cout << "Enter basic salary of the employee: ";
+    cin >> basic;
+
+    // Create an Employee object
+    Employee emp(basic);
+
+    // Calculate and display the gross salary
+    emp.calculateGrossSalary();
+    emp.displayGrossSalary();
+
+    return 0;
+}
